@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login page</title>
+	<style>
+		div {
+			margin: auto;
+			width: 50%;
+			background-color: lightgreen;
+			text-align: center;
+			font-weight: bold;
+			font-family: Calibri;
+			color: black;
+		}
+		img,label,input,button {
+			margin: 1em;
+		}
+		img {
+			width: 50%;
+		}
+		footer {
+			padding: 2em;
+		}
+		h2 {
+			padding-top: 30px;
+		}
+		#codeBtn {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #codeBtn:hover {
+        background-color: #3e8e41;
+      }
+
+
+
+	</style>
+</head>
+<body>
+	<div>
+		<h2>Enter Login Details</h2>
+		<img src="image/logo.jpg"><br>
+			<label for="emailid">Email</label><br>
+			<input type="email" name="emailid" id="emailid" placeholder="Enter Email-id"><br>
+			<label for="password">Password</label><br>
+			<input type="password" placeholder="Enter Password" name="password" id="password"><br>
+			<div>
+        <h4>Referral Code:</h4>
+        <p id="referral-code"></p>
+		<p id="referral-link"></p>
+        <div id="referral-box">
+        </div>
+        <button onclick="generateCode()" id="codeBtn">Generate Code</button>
+      </div>
+      <div>
+        
+        </div>
+        
+      </div>
+      <div id="page-number"></div>
+    </main>
+    <script>
+      function generateCode() {
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var code = "";
+        for (var i = 0; i < 8; i++) {
+          code += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        document.getElementById("referral-code").innerHTML = code;
+        document.getElementById("referral-link").innerHTML = "<a href='https://mydukaan.io/healthyverys/referral/" + code + "'>https://mydukaan.io/healthyverys/referral/" + code + "</a>";
+      }
+
+      function setPageNumber() {
+        var pageNumber = document.getElementsByTagName("main")[0].children.length;
+        document.getElementById("page-number").innerHTML = "Page " + pageNumber;
+      }
+
+      setPageNumber();
+    </script>
+
+
+</body>
+</html>
